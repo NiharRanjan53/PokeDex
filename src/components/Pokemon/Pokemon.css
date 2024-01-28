@@ -1,0 +1,34 @@
+.pokemon-wrapper {
+  text-decoration: none;
+  color: black;
+}
+
+.pokemon {
+  flex-basis: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  background-color: beige;
+  border: 1px solid black;
+  border-radius: 10px;
+  height: 300px;
+  width: 250px;
+}
+.pokemon:hover {
+  background-color: rgb(200, 200, 180);
+}
+.pokemon-name {
+  letter-spacing: 10px;
+  font-size: larger;
+  font-weight: 500;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.pokemon-mage {
+  min-height: 180px;
+  max-height: 200px;
+  min-width: 180px;
+  max-width: 200px;
+}
