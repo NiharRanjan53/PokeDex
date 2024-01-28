@@ -1,3 +1,7 @@
+.pokedex-redirect {
+  display: flex;
+  justify-content: center;
+}
 .pokemon-details-wrapper {
   display: flex;
   flex-direction: column;
@@ -5,9 +9,22 @@
   justify-content: center;
   gap: 2rem;
 }
+.pokemon-image {
+  height: 250px;
+  width: 250px;
+}
 .pokemon-name {
   letter-spacing: 10px;
 }
 .pokemon-attr {
   gap: 1rem;
+}
+.pokemon-types {
+  gap: 10px;
+}
+.pokemon-type {
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 3px 5px;
+  cursor: pointer;
 }
