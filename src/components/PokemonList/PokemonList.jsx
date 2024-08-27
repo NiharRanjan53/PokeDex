@@ -3,7 +3,8 @@ import "./PokemonList.css";
 import usePokemonList from "../../hooks/usePokemonList";
 
 const PokemonList = () => {
-  const [pokemonListState, setPokemonListState] = usePokemonList();
+  const DEFAULT_URL = "https://pokeapi.co/api/v2/pokemon";
+  const [pokemonListState, setPokemonListState] = usePokemonList(DEFAULT_URL);
 
   return (
     <>

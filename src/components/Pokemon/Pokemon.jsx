@@ -3,7 +3,7 @@ import "./Pokemon.css";
 import { Link } from "react-router-dom";
 const Pokemon = ({ id, name, url }) => {
   return (
-    <Link to={`pokemon/${id}`} className="pokemon-wrapper">
+    <Link to={`/pokemon/${id}`} className="pokemon-wrapper">
       <div className="pokemon">
         <div className="pokemon-name">{name}</div>
         <div>

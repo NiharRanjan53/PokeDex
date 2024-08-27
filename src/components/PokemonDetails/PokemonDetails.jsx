@@ -1,10 +1,11 @@
 import { Link, useParams } from "react-router-dom";
 import usePokemon from "../../hooks/usePokemon";
+import Pokemon from "../Pokemon/Pokemon";
 import "./PokemonDetails.css";
 
 const PokemonDetails = () => {
   const { id } = useParams();
-  const [pokemon] = usePokemon(id);
+  const [pokemon, pokemonListState] = usePokemon(id);
   return (
     <>
       <h1 className="pokedex-redirect">
@@ -30,6 +31,20 @@ const PokemonDetails = () => {
           </div>
         </div>
       )}
+      <div className="similar-pokemons">
+        <h2>Similar Pokemons</h2>
+        <div className="pokemon-similar-boxes">
+          {pokemonListState.pokemonList.length > 0 &&
+            pokemonListState.pokemonList.map((pokemon) => (
+              <Pokemon
+                id={pokemon.id}
+                key={pokemon.id}
+                name={pokemon.name}
+                url={pokemon.image}
+              />
+            ))}
+        </div>
+      </div>
     </>
   );
 };
