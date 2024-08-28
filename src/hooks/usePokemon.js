@@ -1,8 +1,10 @@
 import axios from "axios";
+import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import downloadPokemons from "../utils/downloadPokemons";
 
-const usePokemon = (id) => {
+const usePokemon = (pokemonName) => {
+  const { id } = useParams();
   const POKEMON_DETAIL_URL = "https://pokeapi.co/api/v2/pokemon/";
   const [pokemon, setPokemon] = useState(null);
   const [pokemonListState, setPokemonListState] = useState({
@@ -13,7 +15,10 @@ const usePokemon = (id) => {
   });
 
   const downloadGivenPokemon = async (id) => {
-    const response = await axios.get(POKEMON_DETAIL_URL + id);
+    // console.log(POKEMON_DETAIL_URL + (pokemonName ? pokemonName : id));
+    const response = await axios.get(
+      POKEMON_DETAIL_URL + (pokemonName ? pokemonName : id)
+    );
     const pokemon = response.data;
 
     setPokemon({
@@ -28,18 +33,22 @@ const usePokemon = (id) => {
   };
 
   async function downloadPokemonAndRelated(id) {
-    const type = await downloadGivenPokemon(id);
-    await downloadPokemons(
-      pokemonListState,
-      setPokemonListState,
-      `https://pokeapi.co/api/v2/type/${type}`
-    );
+    try {
+      const type = await downloadGivenPokemon(id);
+      await downloadPokemons(
+        pokemonListState,
+        setPokemonListState,
+        `https://pokeapi.co/api/v2/type/${type}`
+      );
+    } catch (e) {
+      console.log("no pokemon found");
+    }
   }
 
   useEffect(() => {
     downloadPokemonAndRelated(id);
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, [id]);
+  }, [id, pokemonName]);
   return [pokemon, pokemonListState];
 };
 

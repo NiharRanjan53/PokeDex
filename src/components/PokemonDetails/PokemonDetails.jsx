@@ -3,9 +3,8 @@ import usePokemon from "../../hooks/usePokemon";
 import Pokemon from "../Pokemon/Pokemon";
 import "./PokemonDetails.css";
 
-const PokemonDetails = () => {
-  const { id } = useParams();
-  const [pokemon, pokemonListState] = usePokemon(id);
+const PokemonDetails = ({ pokemonName }) => {
+  const [pokemon, pokemonListState] = usePokemon(pokemonName);
   return (
     <>
       <h1 className="pokedex-redirect">
